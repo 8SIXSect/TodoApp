@@ -3,6 +3,5 @@ import App from './App.vue';
 import './index.css';
 
 const app = createApp(App)
-const API_URL =  "http://localhost:8000/tasks/";
-app.provide('API_URL', API_URL);
+app.provide('API_URL', process.env.VUE_APP_API_URL);
 app.mount('#app');

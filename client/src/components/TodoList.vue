@@ -1,5 +1,6 @@
 <script>
 
+
 export default {
     props: ["tasks", "updateFunction"],
     inject: ["API_URL"],
@@ -18,6 +19,7 @@ export default {
             const jsonPayload = {
                 id: taskId
             };
+
 
             await fetch(this.API_URL, {
                 "headers": {
