@@ -4,6 +4,9 @@
 export default {
     props: ["tasks", "updateFunction"],
     inject: ["API_URL"],
+    setup() {
+        console.log(process.env);
+    },
     data() {
         return {
             tasksAreLoading: true,

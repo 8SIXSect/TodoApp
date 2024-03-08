@@ -13,7 +13,6 @@ export default {
             tasks: [],
         }
     },
-
     mounted() {
         this.sendGetRequestAndUpdateTasks();
     },
