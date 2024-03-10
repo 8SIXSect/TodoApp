@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = False if env('DEBUG') == "0" else True
 
 ALLOWED_HOSTS = ["localhost"]
-CORS_ALLOWED_ORIGINS = ['http://localhost:8080', "https://todoapp-2igo.onrender.com/"]
+CORS_ALLOWED_ORIGINS = ['http://localhost:8080', "https://todoapp-2igo.onrender.com"]
 
 # Application definition
 
