@@ -91,7 +91,7 @@ DATABASES = {
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
     'default': dj_database_url.config(
-        default="postgres://django_todo_app_0dqt_user:nV2aMhQg8ogRvw13S9xAfRPnaKcBArOQ@dpg-cnmgdsol6cac73fbt74g-a/django_todo_app_0dqt",
+        default=env("DATABASE_URL"),
         conn_max_age=600
     )
 }
@@ -133,7 +133,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-print(DEBUG, type(DEBUG))
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
