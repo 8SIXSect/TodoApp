@@ -32,7 +32,9 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = False if env('DEBUG') == "0" else True
 
 ALLOWED_HOSTS = ["localhost", "todoappapi-99w2.onrender.com"]
-CORS_ALLOWED_ORIGINS = ['http://localhost:8080', "https://todoapp-2igo.onrender.com"]
+CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-2igo.onrender.com"]
+
+AUTH_USER_MODEL = "main.TodoAppUser"
 
 # Application definition
 
@@ -96,7 +98,6 @@ DATABASES = {
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -114,6 +115,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 
 
 # Internationalization
