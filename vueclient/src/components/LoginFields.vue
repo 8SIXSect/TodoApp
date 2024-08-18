@@ -55,17 +55,18 @@ const onSubmit = handleSubmit(async formValues => {
             mode: "cors"
         });
 
-        const data = await response.json();
+        const responseData = await response.json();
 
         if (!response.ok) {
-            setFieldError("username", data);
-            setFieldError("password", data);
+            setFieldError("username", responseData);
+            setFieldError("password", responseData);
             return;
         }
 
-        // Add a redirct here
-        console.log(data, store.user, store.isAuthenticated);
-        alert("Welcome! " + data);
+        store.user = responseData;
+        store.isAuthenticated = true;
+
+        // redirect user
     } catch (error) {
         console.error("Error fetching data:", error);
     }
