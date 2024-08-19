@@ -3,6 +3,10 @@
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 
 /**
@@ -61,22 +65,21 @@ const onSubmit = handleSubmit(async formValues => {
             mode: "cors"
         });
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            
-            if (data.username !== undefined) {
-                setFieldError("username", data.username);
-            }
-
-            if (data.email !== undefined) {
-                setFieldError("email", data.email);
-            }
-
+        if (response.ok) {
+            router.push({ name: "login" });
             return;
         }
 
-        alert("Form Submitted!");
+        const data = await response.json();
+       
+        if (data.username !== undefined) {
+            setFieldError("username", data.username);
+        }
+
+        if (data.email !== undefined) {
+            setFieldError("email", data.email);
+        }
+
     } catch (error) {
         console.error("Error fetching data:", error);
     }

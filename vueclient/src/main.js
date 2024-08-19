@@ -4,15 +4,29 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import SignupView from './views/SignupView.vue';
 import LoginView from './views/LoginView.vue';
+import DashboardView from './views/DashboardView.vue';
 
 const routes = [
     {
-        path: "/",
+        path: "/signup/",
+        name: "signup",
         component: SignupView
     },
     {
-        path: "/login",
+        path: "/login/",
+        name: "login",
         component: LoginView
+    },
+    {
+        path: "/dashboard/",
+        name: "dashboard",
+        component: DashboardView,
+    },
+    {
+        path: "/",
+        redirect: {
+            name: "dashboard"
+        }
     }
 ];
 
@@ -24,7 +38,7 @@ const router = createRouter({
 
 
 const app = createApp(App);
-app.provide('API_URL', import.meta.env.API_URL);
+app.provide('API_URL', import.meta.env.VITE_API_URL);
 
 const pinia = createPinia();
 app.use(pinia);

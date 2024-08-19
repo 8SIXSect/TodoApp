@@ -1,10 +1,10 @@
-<script>
+<script setup>
 
 import SignupButton from "../components/SignupButton.vue";
+import { useUserDataStore } from "../stores/userDataStore";
 
-export default {
-    components: { SignupButton }
-}
+const store = useUserDataStore();
+store.redirectUserIfAlreadyAuthenticated();
 
 </script>
 <template>

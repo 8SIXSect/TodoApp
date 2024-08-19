@@ -1,76 +1,75 @@
-<script>
+<script setup>
+import { inject, watch, ref } from 'vue';
 
 
-export default {
-    props: ["tasks", "updateFunction"],
-    inject: ["API_URL"],
-    data() {
-        return {
-            tasksAreLoading: true,
-        }
-    },
-    watch: {
-        tasks() {
-            this.tasksAreLoading = false;
-        }
-    },
-    methods: {
-        async deleteTask(taskId) {
-            const jsonPayload = {
-                id: taskId
-            };
+const API_URL = inject("API_URL");
+const props = defineProps(["tasks", "updateFuncton"]);
+
+const tasksAreLoading = ref(true);
+
+watch(props.tasks, () => {
+    tasksAreLoading.value = false;
+});
 
 
-            await fetch(this.API_URL, {
-                "headers": {
-                    "content-type": "application/json"
-                },
-                method: "DELETE",
-                body: JSON.stringify(jsonPayload)
-            });
-            
-            this.updateFunction();
+const deleteTask = async (taskId) => {
+    const jsonPayload = {
+        id: taskId
+    };
+
+
+    await fetch(API_URL, {
+        "headers": {
+            "content-type": "application/json"
         },
-        async editTask(taskId) {
-            const taskInput = document.getElementById(`task-${taskId}`);
+        method: "DELETE",
+        body: JSON.stringify(jsonPayload)
+    });
+    
+    props.updateFuncton();
+};
 
-            if (taskInput.readOnly) {
-                taskInput.readOnly = false;
 
-                const taskContainer = taskInput.parentElement;
-                taskContainer.classList.remove("bg-emerald-500");
-                taskContainer.classList.add("bg-emerald-700");
-                return;
-            }
+const editTask = async (taskId) => {
+   const taskInput = document.getElementById(`task-${taskId}`);
 
-            // When readOnly is already false, confirm changes
-            this.revertEditedTask(taskId);
-        },
-        async revertEditedTask(taskId) {
-            const taskInput = document.getElementById(`task-${taskId}`);
-            if (!taskInput.readOnly) {
+    if (taskInput.readOnly) {
+        taskInput.readOnly = false;
 
-                taskInput.readOnly = true;
+        const taskContainer = taskInput.parentElement;
+        taskContainer.classList.remove("bg-emerald-500");
+        taskContainer.classList.add("bg-emerald-700");
+        return;
+    }
 
-                const taskContainer = taskInput.parentElement;
-                taskContainer.classList.remove("bg-emerald-700");
-                taskContainer.classList.add("bg-emerald-500");
+    // When readOnly is already false, confirm changes
+    revertEditedTask(taskId);
+};
 
-                const jsonPayload = {
-                    id: taskId,
-                    new_description: taskInput.value
-                };
 
-                await fetch(this.API_URL, {
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    method: "PATCH",
-                    body: JSON.stringify(jsonPayload)
-                });
+const revertEditedTask = async (taskId) => {
+    const taskInput = document.getElementById(`task-${taskId}`);
+    if (!taskInput.readOnly) {
 
-            }
-        }
+        taskInput.readOnly = true;
+
+        const taskContainer = taskInput.parentElement;
+        taskContainer.classList.remove("bg-emerald-700");
+        taskContainer.classList.add("bg-emerald-500");
+
+        const jsonPayload = {
+            id: taskId,
+            new_description: taskInput.value
+        };
+
+        await fetch(API_URL, {
+            headers: {
+                "content-type": "application/json"
+            },
+            method: "PATCH",
+            body: JSON.stringify(jsonPayload)
+        });
+
     }
 }
 

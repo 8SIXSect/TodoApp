@@ -4,9 +4,11 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
 import { useUserDataStore } from "../stores/userDataStore";
+import { useRouter } from 'vue-router';
 
 
 const store = useUserDataStore();
+const router = useRouter();
 
 
 /**
@@ -65,8 +67,11 @@ const onSubmit = handleSubmit(async formValues => {
 
         store.user = responseData;
         store.isAuthenticated = true;
+        store.saveState()
 
-        // redirect user
+        router.push({ name: "dashboard" });
+
+        // todo: make logout button -- WORK ON NEXT. ACTUALLY, MAKE LIKE A DASHBOARD OR TODO LIST VIEW FIRST FOR ROUTER
     } catch (error) {
         console.error("Error fetching data:", error);
     }
