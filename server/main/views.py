@@ -1,10 +1,9 @@
-from typing import Dict, Optional
+from typing import Optional
 from django.contrib.auth import authenticate, login
-from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_http_methods
 from django.db.models import QuerySet
 from django.http import HttpResponse, JsonResponse
-from django.core.handlers.wsgi import WSGIRequest
 from rest_framework import status
 from rest_framework.views import APIView, Response
 from rest_framework.viewsets import ModelViewSet
@@ -85,4 +84,15 @@ class UserLoginAPIView(APIView):
 
         return Response("No user found that matches these credentials",
                         status=status.HTTP_401_UNAUTHORIZED)
+
+
+
+@ensure_csrf_cookie
+@require_http_methods(['GET'])
+def set_csrf_token(request):
+    """
+    We set the CSRF cookie on the frontend.
+    """
+
+    return JsonResponse({'message': 'CSRF cookie set'})
 

@@ -4,27 +4,28 @@ import LogoutButton from "./LogoutButton.vue";
 import { inject } from 'vue';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
+import { useTodoTaskStore } from '../stores/todoTasksStore';
 
 
 const API_URL = inject("API_URL");
 
-const tasks = ref([]);
+const tasksStore = useTodoTaskStore();
 const inputForCreatingTodo = ref(null);
+const tasksAreLoading = ref(true);
 
 onMounted(() => {
     sendGetRequestAndUpdateTasks();
+    tasksAreLoading.value = false;
 });
 
 const sendGetRequestAndUpdateTasks = async () => {
     let response = await fetch(API_URL, {
         method: "GET",
         credentials: "include",
-        
-    })
+    });
+
     response.json().then(jsonData => {
-        console.log(jsonData);
-        tasks.value = jsonData;
-        console.log(tasks.value);
+        tasksStore.tasks = jsonData;
     });
 };
 
@@ -61,7 +62,7 @@ const addTaskOnFormSubmit = async (event) => {
                     <img class="w-12 h-12" src="@/assets/plus.svg" alt="Plus"/>
                 </button>
             </form>
-            <TodoList :tasks="tasks" :update-function="sendGetRequestAndUpdateTasks"/>
+            <TodoList :tasks-are-loading="tasksAreLoading" :update-function="sendGetRequestAndUpdateTasks"/>
         </div>
     </div>
     <LogoutButton />

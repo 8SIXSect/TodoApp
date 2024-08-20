@@ -40,41 +40,15 @@ const [password, passwordAttrs] = defineField("password");
     * Handles login form submission & API calls
 
     * @param {Object} formValues User's validated input
-    * @param {string} formValues.email User's Email
+    * @param {string} formValues.username User's Username 
     * @param {string} formValues.password User's Password
 
     * @return {void}
 */
 const onSubmit = handleSubmit(async formValues => {
-    try {
-
-        const response = await fetch('http://localhost:8000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formValues),
-            mode: "cors"
-        });
-
-        const responseData = await response.json();
-
-        if (!response.ok) {
-            setFieldError("username", responseData);
-            setFieldError("password", responseData);
-            return;
-        }
-
-        store.user = responseData;
-        store.isAuthenticated = true;
-        store.saveState()
-
-        router.push({ name: "dashboard" });
-
-        // todo: make logout button -- WORK ON NEXT. ACTUALLY, MAKE LIKE A DASHBOARD OR TODO LIST VIEW FIRST FOR ROUTER
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
+   const errorMessage = await store.login(formValues.username, formValues.password, router);
+   setFieldError("username", errorMessage);
+   setFieldError("password", errorMessage);
 });
 
 

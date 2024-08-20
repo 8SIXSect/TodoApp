@@ -33,6 +33,8 @@ DEBUG = False if env('DEBUG') == "0" else True
 
 ALLOWED_HOSTS = ["localhost", "todoappapi-99w2.onrender.com"]
 CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-2igo.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5000']
+CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
 

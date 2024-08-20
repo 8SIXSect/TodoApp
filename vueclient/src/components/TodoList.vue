@@ -1,15 +1,11 @@
 <script setup>
-import { inject, watch, ref } from 'vue';
+import { inject } from 'vue';
+import { useTodoTaskStore } from '../stores/todoTasksStore';
 
 
 const API_URL = inject("API_URL");
-const props = defineProps(["tasks", "updateFuncton"]);
-
-const tasksAreLoading = ref(true);
-
-watch(props.tasks, () => {
-    tasksAreLoading.value = false;
-});
+const props = defineProps(["tasksAreLoading", "updateFuncton"]);
+const tasksStore = useTodoTaskStore();
 
 
 const deleteTask = async (taskId) => {
@@ -81,7 +77,7 @@ const revertEditedTask = async (taskId) => {
     </template>
     <template v-else>
         <ul>
-            <li class="p-8 bg-emerald-500 flex items-center text-white" v-for="task in tasks" :key="task.id">
+            <li class="p-8 bg-emerald-500 flex items-center text-white" v-for="task in tasksStore.tasks" :key="task.id">
                 <input class="border-0 bg-transparent outline-none text-4xl font-semibold grow" readonly :value="task.description"
                        :id="`task-${task.id}`" v-on:keydown.enter="revertEditedTask(task.id)"/>
                 <span class="flex">

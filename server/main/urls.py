@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path("register", views.UserCreateAPIView.as_view()),
     path("login", views.UserLoginAPIView.as_view()),
+    path("api/set-csrf-token", views.set_csrf_token)
 ]
 
 urlpatterns += router.urls

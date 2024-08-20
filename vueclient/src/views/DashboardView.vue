@@ -5,9 +5,9 @@ import TodoListContainer from '../components/TodoListContainer.vue';
 import { useUserDataStore } from '../stores/userDataStore';
 
 const store = useUserDataStore();
+const router = useRouter();
 
 if (!store.isAuthenticated) {
-    const router = useRouter();
     router.push({ name: "login" });
 }
 
