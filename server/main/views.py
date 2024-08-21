@@ -14,14 +14,24 @@ from . import serializers
 
 
 class TasksViewSet(ModelViewSet):
-    queryset = Task.objects.all()
+    queryset = Task.objects.all()  # pyright: ignore
     serializer_class = serializers.TaskSerializer
-    permission_classes = [IsAuthenticated] 
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs): 
+
+        user: QuerySet[TodoAppUser] = TodoAppUser.objects.filter(username=request.user).first()
+        if user is None:
+            return Response(f"Unknown user, {request.user}", status=status.HTTP_401_UNAUTHORIZED)
+
+        Task.objects.create(description=request.data["description"], user_id=user.id)  # pyright: ignore
+        return HttpResponse(status=status.HTTP_201_CREATED)
+
 
     def delete(self, request):
         task_id: int = request.data['id']
 
-        task_queryset: QuerySet[Task] = Task.objects.filter(id=task_id)
+        task_queryset: QuerySet[Task] = Task.objects.filter(id=task_id)  # pyright: ignore
         if not task_queryset.exists():
             return Response(f"Task with Id: {task_id} does not exist",
                             status=status.HTTP_404_NOT_FOUND)
@@ -34,16 +44,14 @@ class TasksViewSet(ModelViewSet):
 
     def patch(self, request):
         task_id: int = request.data['id']
-        task_queryset: QuerySet[Task] = Task.objects.filter(id=task_id)
+        task_queryset: QuerySet[Task] = Task.objects.filter(id=task_id)  # pyright: ignore
         
         if not task_queryset.exists():
             return Response(f"Task with Id: {task_id} does not exist",
                             status=status.HTTP_404_NOT_FOUND)
         
-        task: Task = task_queryset.first()
-
-        new_description: str = request.data['new_description']
-        task.description = new_description
+        task: Task = task_queryset.first()  # pyright: ignore
+        task.description = request.data["new_description"]
         task.save()
 
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)

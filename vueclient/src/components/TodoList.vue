@@ -1,10 +1,11 @@
 <script setup>
 import { inject } from 'vue';
 import { useTodoTaskStore } from '../stores/todoTasksStore';
+import { getCSRFToken } from '../stores/userDataStore';
 
 
 const API_URL = inject("API_URL");
-const props = defineProps(["tasksAreLoading", "updateFuncton"]);
+const props = defineProps(["tasksAreLoading", "updateFunction"]);
 const tasksStore = useTodoTaskStore();
 
 
@@ -13,16 +14,17 @@ const deleteTask = async (taskId) => {
         id: taskId
     };
 
-
     await fetch(API_URL, {
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "X-CSRFToken": getCSRFToken()
         },
         method: "DELETE",
-        body: JSON.stringify(jsonPayload)
+        body: JSON.stringify(jsonPayload),
+        credentials: "include"
     });
     
-    props.updateFuncton();
+    props.updateFunction();
 };
 
 
@@ -60,10 +62,12 @@ const revertEditedTask = async (taskId) => {
 
         await fetch(API_URL, {
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "X-CSRFToken": getCSRFToken()
             },
             method: "PATCH",
-            body: JSON.stringify(jsonPayload)
+            body: JSON.stringify(jsonPayload),
+            credentials: "include"
         });
 
     }

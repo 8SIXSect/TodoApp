@@ -5,5 +5,5 @@ export const useTodoTaskStore = defineStore("todoTask", {
         return {
             tasks: []
         };
-    }
+    },
 });
