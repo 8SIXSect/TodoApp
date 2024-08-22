@@ -51,6 +51,7 @@ const addTaskOnFormSubmit = async () => {
 
     newTodoTask.value = "";
 };
+
 </script>
 
 <template>

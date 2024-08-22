@@ -8,7 +8,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 
-
 /**
     * Regex pattern that matches only alphabetic characters
 */
@@ -91,14 +90,14 @@ const onSubmit = handleSubmit(async formValues => {
     <div class="flex justify-center items-center h-screen">
         <div class="h-2/3 w-1/2">
             <form class="flex flex-col" @submit="onSubmit">
-                <input type="text" name="email" v-model="email" v-bind="emailAttrs" />
-                <p>{{ errors.email }}</p>
+                <input type="text" id="email" name="email" v-model="email" v-bind="emailAttrs" />
+                <p id="emailErrors">{{ errors.email }}</p>
 
-                <input type="text" name="username" v-model="username" v-bind="usernameAttrs" />
-                <p>{{ errors.username }}</p>
+                <input type="text" id="username" name="username" v-model="username" v-bind="usernameAttrs" />
+                <p id="usernameErrors">{{ errors.username }}</p>
 
-                <input type="password" name="password" v-model="password" v-bind="passwordAttrs" />
-                <p>{{ errors.password }}</p>
+                <input type="password" id="password" name="password" v-model="password" v-bind="passwordAttrs" />
+                <p id="passwordErrors">{{ errors.password }}</p>
 
                 <button>Submit</button>
             </form>
