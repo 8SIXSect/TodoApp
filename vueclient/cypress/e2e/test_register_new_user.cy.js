@@ -17,7 +17,7 @@ describe("Input values into register field and confirm that a user already exist
         
     })
 
-    it("Input Invalid email into email field", () => {
+    it("Input invalid email into email field", () => {
         cy.get("#email").type("a90ofdjjod");
         getField("email").shouldHaveError();
     })
@@ -35,6 +35,26 @@ describe("Input values into register field and confirm that a user already exist
     it("Input a username that uses non-alphabetic characters", () => {
         cy.get("#username").type("#42***?");
         getField("username").shouldHaveError();
+    })
+
+    it("Input a username that is valid into field", () => {
+        cy.get("#username").type("myUsername");
+        getField("username").shouldNotHaveError();
+    })
+
+    it("Input a password that is too short into field", () => {
+        cy.get("#password").type("short");
+        getField("password").shouldHaveError();
+    })
+
+    it("Input a password that types non-keyboard characters", () => {
+        cy.get("#password").type("αΘθΨψΩ");
+        getField("password").shouldHaveError();
+    })
+
+    it("Input a valid password into field", () => {
+        cy.get("#password").type("super123@Secure")
+        getField("password").shouldNotHaveError();
     })
 })
 
