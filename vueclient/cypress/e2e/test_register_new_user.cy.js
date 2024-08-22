@@ -1,4 +1,4 @@
-import { getField } from "../support/e2e"
+import { getField, typeIntoField } from "../support/e2e"
 
 
 describe("Input values into register field and confirm that a user already exists", () => {
@@ -18,43 +18,35 @@ describe("Input values into register field and confirm that a user already exist
     })
 
     it("Input invalid email into email field", () => {
-        cy.get("#email").type("a90ofdjjod");
-        getField("email").shouldHaveError();
+        typeIntoField("email", "a90ofdjjod", true);
     })
 
     it("Input valid email into email field", () => {
-        cy.get("#email").type("test@firefox.org");
-        getField("email").shouldNotHaveError();
+        typeIntoField("email", "test@firefox.org", false);
     })
 
     it("Input a username that's too short into field", () => {
-        cy.get("#username").type("ab");
-        getField("username").shouldHaveError();
+        typeIntoField("username", "ab", true);
     })
 
     it("Input a username that uses non-alphabetic characters", () => {
-        cy.get("#username").type("#42***?");
-        getField("username").shouldHaveError();
+        typeIntoField("username", "#42***?", true);
     })
 
     it("Input a username that is valid into field", () => {
-        cy.get("#username").type("myUsername");
-        getField("username").shouldNotHaveError();
+        typeIntoField("username", "myUsername", false);
     })
 
     it("Input a password that is too short into field", () => {
-        cy.get("#password").type("short");
-        getField("password").shouldHaveError();
+        typeIntoField("password", "short", true);
     })
 
     it("Input a password that types non-keyboard characters", () => {
-        cy.get("#password").type("αΘθΨψΩ");
-        getField("password").shouldHaveError();
+        typeIntoField("password", "αΘθΨψΩ", true);
     })
 
     it("Input a valid password into field", () => {
-        cy.get("#password").type("super123@Secure")
-        getField("password").shouldNotHaveError();
+        typeIntoField("password", "super123@Secure", false);
     })
 })
 
