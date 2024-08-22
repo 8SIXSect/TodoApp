@@ -18,6 +18,15 @@ class TasksViewSet(ModelViewSet):
     serializer_class = serializers.TaskSerializer
     permission_classes = [IsAuthenticated]
 
+    def list(self, request, *args, **kwargs):
+
+        user: QuerySet[TodoAppUser] = TodoAppUser.objects.filter(username=request.user).first()
+        tasks: QuerySet[Task] = Task.objects.filter(user_id=user.id)  # pyright: ignore
+
+        serializer = serializers.TaskSerializer(tasks, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
     def create(self, request, *args, **kwargs): 
 
         user: QuerySet[TodoAppUser] = TodoAppUser.objects.filter(username=request.user).first()

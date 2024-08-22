@@ -5,11 +5,12 @@ import { inject } from 'vue';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { useTodoTaskStore } from '../stores/todoTasksStore';
-import { getCSRFToken } from '../stores/userDataStore';
+import { getCSRFToken, useUserDataStore } from '../stores/userDataStore';
 
 
 const API_URL = inject("API_URL");
 
+const userDataStore = useUserDataStore();
 const tasksStore = useTodoTaskStore();
 
 const newTodoTask = ref("");
@@ -57,7 +58,9 @@ const addTaskOnFormSubmit = async () => {
 <template>
     <div class="m-h-96 flex justify-center items-center">
         <div class="flex flex-col w-1/2">
-            <h1 class="text-5xl bg-slate-700 text-slate-100 font-bold text-center py-12 rounded-t-lg">Daily Todo Lists</h1>
+            <h1 class="text-5xl bg-slate-700 text-slate-100 font-bold text-center py-12 rounded-t-lg">
+                {{ userDataStore.user.username }}'s Tasks
+            </h1>
             <form class="flex border" @submit.prevent="addTaskOnFormSubmit">
                 <input type="text" placeholder="Add your todo"
                        class="grow p-4 text-2xl outline-none" v-model="newTodoTask" />
