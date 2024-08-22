@@ -56,11 +56,11 @@ const onSubmit = handleSubmit(async formValues => {
 
 <template>
     <form class="flex flex-col" @submit="onSubmit">
-        <input type="text" name="username" v-model="username" v-bind="usernameAttrs" />
-        <p>{{ errors.username }}</p>
+        <input type="text" id="username" name="username" v-model="username" v-bind="usernameAttrs" />
+        <p id="usernameErrors">{{ errors.username }}</p>
 
-        <input type="password" name="password" v-model="password" v-bind="passwordAttrs" />
-        <p>{{ errors.password }}</p>
+        <input type="password" id="password" name="password" v-model="password" v-bind="passwordAttrs" />
+        <p id="passwordErrors">{{ errors.password }}</p>
 
         <button>Submit</button>
     </form>

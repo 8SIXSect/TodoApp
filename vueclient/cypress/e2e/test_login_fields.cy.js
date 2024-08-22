@@ -1,26 +1,18 @@
-import { getField, typeIntoField } from "../support/e2e"
+import { getField, typeIntoField } from "../support/e2e";
 
 
-describe("Input values into register fields", () => {
-    beforeEach(() => cy.visit("/signup"))
+describe("Input values into login fields and confirm validity", () => {
+    beforeEach(() => cy.visit("/login"))
 
     it("Input no data into entry box and get error because they are required fields", () => {
         cy.get("button")
             .first()
             .click()
 
-        for (const field of ["email", "username", "password"]) {
+        for (const field of ["username", "password"]) {
             getField(field).shouldHaveError();
         }
         
-    })
-
-    it("Input invalid email into email field", () => {
-        typeIntoField("email", "a90ofdjjod", true);
-    })
-
-    it("Input valid email into email field", () => {
-        typeIntoField("email", "test@firefox.org", false);
     })
 
     it("Input a username that's too short into field", () => {
@@ -46,5 +38,6 @@ describe("Input values into register fields", () => {
     it("Input a valid password into field", () => {
         typeIntoField("password", "super123@Secure", false);
     })
+
 })
 
