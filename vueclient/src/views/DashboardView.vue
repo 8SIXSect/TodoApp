@@ -1,7 +1,7 @@
 <script setup>
 
 import { useRouter } from 'vue-router';
-import TodoListContainer from '../components/TodoListContainer.vue';
+import Dashboard from '../components/Dashboard.vue';
 import { useUserDataStore } from '../stores/userDataStore';
 
 const store = useUserDataStore();
@@ -14,5 +14,5 @@ if (!store.isAuthenticated) {
 </script>
 
 <template>
-    <TodoListContainer />
+    <Dashboard />
 </template>

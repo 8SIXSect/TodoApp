@@ -25,8 +25,8 @@ const keyboardCharsPattern = /^[ -~]+$/;
     * Zod validation schema for the signup form
 */
 const validationSchema = toTypedSchema(z.object({
-    email: z.string().min(1).email(),
-    username: z.string().min(3).regex(alphaCharsPattern, {
+    email: z.string().min(1).max(32).email(),
+    username: z.string().min(3).max(16).regex(alphaCharsPattern, {
         message: "Username may only contain alphabetic characters"
     }),
     password: z.string().min(8).regex(keyboardCharsPattern, {
