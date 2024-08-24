@@ -1,24 +1,27 @@
 <script setup>
+import { useField } from 'vee-validate';
+
+
 
 const props = defineProps({
-    modelValue: String,
     type: String,
-    name: String
-})
+    name: String,
+});
 
-
-defineEmits(["update:modelValue"])
+const { value, errorMessage } = useField(() => props.name);
 
 </script>
 
 <template>
-    <input
-        :type="type"
-        :name="name"
-        :id="name"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        />
+    <div>
+        <input
+            :type="type"
+            :name="name"
+            :id="name"
+            v-model="value"
+            />
+        <p>{{ errorMessage }}</p>
+    </div>
 </template>
 
 <style scoped>
@@ -26,5 +29,10 @@ defineEmits(["update:modelValue"])
 input {
     border: 1px solid black;
 }
+
+p {
+    color: red;
+}
+
 
 </style>
