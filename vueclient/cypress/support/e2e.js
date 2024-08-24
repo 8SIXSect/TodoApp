@@ -10,7 +10,7 @@ export const typeIntoField = (fieldName, fieldText, expectError) => {
 
 
 export const getField = (fieldName) => {
-    const errorField = cy.get(`#${fieldName}Errors`);
+    const errorField = cy.get(`#${fieldName} + p`)
 
     return {
         shouldHaveError: () => errorField.should("not.be.empty"),

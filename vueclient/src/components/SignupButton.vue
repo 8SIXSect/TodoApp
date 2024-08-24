@@ -4,6 +4,7 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
 import { useRouter } from 'vue-router';
+import InputField from "./InputField.vue";
 
 const router = useRouter();
 
@@ -90,14 +91,19 @@ const onSubmit = handleSubmit(async formValues => {
     <div class="flex justify-center items-center h-screen">
         <div class="h-2/3 w-1/2">
             <form class="flex flex-col" @submit="onSubmit">
-                <input type="text" id="email" name="email" v-model="email" v-bind="emailAttrs" />
-                <p id="emailErrors">{{ errors.email }}</p>
+                <div>
+                    <InputField type="text" name="email" v-model="email" v-bind="emailAttrs" />
+                    <p id="emailErrors">{{ errors.email }}</p>
+                </div>
+                <div>
+                    <InputField type="text" name="username" v-model="username" v-bind="usernameAttrs" />
+                    <p id="usernameErrors">{{ errors.username }}</p>
 
-                <input type="text" id="username" name="username" v-model="username" v-bind="usernameAttrs" />
-                <p id="usernameErrors">{{ errors.username }}</p>
-
-                <input type="password" id="password" name="password" v-model="password" v-bind="passwordAttrs" />
-                <p id="passwordErrors">{{ errors.password }}</p>
+                </div>
+                <div>
+                    <InputField type="password" name="password" v-model="password" v-bind="passwordAttrs" />
+                    <p id="passwordErrors">{{ errors.password }}</p>
+                </div>
 
                 <button>Submit</button>
             </form>
