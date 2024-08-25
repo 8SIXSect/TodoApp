@@ -5,7 +5,7 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
 import { useRouter } from 'vue-router';
 import InputField from "./InputField.vue";
-import SubmitButton from "@/components/user_forms/SubmitButton.vue";
+import UserForm from '@/components/user_forms/UserForm.vue';
 
 const router = useRouter();
 
@@ -80,17 +80,10 @@ const onSubmit = handleSubmit(async formValues => {
 </script>
 
 <template>
-    <div class="flex justify-center items-center h-screen">
-        <div class="h-2/3 w-1/2">
-            <form class="flex flex-col" @submit="onSubmit">
-                <InputField type="text" name="email" />
-                <InputField type="text" name="username"  />
-                <InputField type="password" name="password"  />
-
-                <SubmitButton text="Sign Up"/>
-            </form>
-        </div>
-    </div>
+    <UserForm title="Sign Up" :on-submit="onSubmit" submit-button-text="Sign Up">
+        <InputField type="text" name="email" />
+        <InputField type="text" name="username"  />
+        <InputField type="password" name="password"  />
+    </UserForm>
 </template>
-
 

@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { useUserDataStore } from "@/stores/userDataStore";
 import { useRouter } from 'vue-router';
 import InputField from './InputField.vue';
-import SubmitButton from "@/components/user_forms/SubmitButton.vue";
+import UserForm from './UserForm.vue';
 
 
 const store = useUserDataStore();
@@ -55,16 +55,9 @@ const onSubmit = handleSubmit(async formValues => {
 </script>
 
 <template>
-    <div class="flex flex-col justify-center items-center h-screen">
-        <div class="h-5/6">
-            <form class="flex flex-col items-center gap-y-10 pb-4 border border-solid border-black rounded-lg shadow-xl" @submit="onSubmit">
-                <h1 class="text-5xl bg-slate-300 w-full text-center py-2 rounded-t-lg">Login</h1>
-                <InputField type="text" name="username"  />
-                <InputField type="password" name="password"  />
-
-                <SubmitButton text="Login"/>
-            </form>
-        </div>
-    </div>
+    <UserForm title="Login" :on-submit="onSubmit" submit-button-text="Login">
+        <InputField type="text" name="username"  />
+        <InputField type="password" name="password"  />
+    </UserForm>
 </template>
 
