@@ -1,6 +1,6 @@
 <script setup>
 
-import SignupButton from "../components/SignupButton.vue";
+import SignupForm from "../components/SignupForm.vue";
 import { useUserDataStore } from "../stores/userDataStore";
 
 const store = useUserDataStore();
@@ -8,6 +8,6 @@ store.redirectUserIfAlreadyAuthenticated();
 
 </script>
 <template>
-    <SignupButton />
+    <SignupForm />
 </template>
 

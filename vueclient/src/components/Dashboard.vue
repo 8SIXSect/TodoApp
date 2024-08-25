@@ -59,7 +59,7 @@ const addTaskOnFormSubmit = async () => {
     <div class="m-h-96 flex justify-center items-center">
         <div class="flex flex-col w-1/2">
             <h1 class="text-5xl bg-slate-700 text-slate-100 font-bold text-center py-12 rounded-t-lg">
-                {{ userDataStore.user.username }}'s Tasks
+                {{ userDataStore.user?.username }}'s Tasks
             </h1>
             <form class="flex border" @submit.prevent="addTaskOnFormSubmit">
                 <input type="text" placeholder="Add your todo"

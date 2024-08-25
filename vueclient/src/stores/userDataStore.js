@@ -40,6 +40,7 @@ export const useUserDataStore = defineStore("userData", {
 
             const responseData = await response.json();
 
+            // This returns an error msg
             if (!response.ok) {
                 return responseData;
             }

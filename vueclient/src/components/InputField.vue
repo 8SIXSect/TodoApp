@@ -28,10 +28,20 @@ const { value, errorMessage } = useField(() => props.name);
 
 input {
     border: 1px solid black;
+
+    /*
+        if you add binding, then make it length + 4ch
+     */
+    width: 20ch;
 }
 
 p {
     color: red;
+
+    /*
+        Add the binding for this one too
+    */
+    max-width: 20ch;
 }
 
 

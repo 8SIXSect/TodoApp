@@ -1,7 +1,7 @@
 <script setup>
 
 
-import LoginFields from '../components/LoginFields.vue';
+import LoginForm from '../components/LoginForm.vue';
 import { useUserDataStore } from '../stores/userDataStore';
 
 
@@ -11,5 +11,5 @@ store.redirectUserIfAlreadyAuthenticated();
 </script>
 
 <template>
-    <LoginFields />
+    <LoginForm />
 </template>

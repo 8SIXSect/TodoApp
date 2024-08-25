@@ -50,34 +50,30 @@ const { setFieldError, handleSubmit } = useForm({
     * @return {void}
 */
 const onSubmit = handleSubmit(async formValues => {
-    try {
-        const response = await fetch('http://localhost:8000/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formValues),
-            mode: "cors"
-        });
+    const response = await fetch('http://localhost:8000/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+        mode: "cors"
+    });
 
-        if (response.ok) {
-            router.push({ name: "login" });
-            return;
-        }
-
-        const data = await response.json();
-       
-        if (data.username !== undefined) {
-            setFieldError("username", data.username);
-        }
-
-        if (data.email !== undefined) {
-            setFieldError("email", data.email);
-        }
-
-    } catch (error) {
-        console.error("Error fetching data:", error);
+    if (response.ok) {
+        router.push({ name: "login" });
+        return;
     }
+
+    const data = await response.json();
+   
+    if (data.username !== undefined) {
+        setFieldError("username", data.username);
+    }
+
+    if (data.email !== undefined) {
+        setFieldError("email", data.email);
+    }
+
 });
 
 </script>
