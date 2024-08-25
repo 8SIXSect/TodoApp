@@ -1,5 +1,6 @@
 <script setup>
 import { useField } from 'vee-validate';
+import { computed } from 'vue';
 
 
 
@@ -10,15 +11,23 @@ const props = defineProps({
 
 const { value, errorMessage } = useField(() => props.name);
 
+
+/**
+    * A computed ref containing the `name` prop with its first letter is capitalized.
+*/
+const capitalizedName = computed(() => props.name[0].toUpperCase() + props.name.slice(1));
+
 </script>
 
 <template>
-    <div>
+    <div class="mx-6">
+        <h3 class="text-md">{{ capitalizedName }}</h3>
         <input
             :type="type"
             :name="name"
             :id="name"
             v-model="value"
+            class="p-2 rounded-md outline-none"
             />
         <p>{{ errorMessage }}</p>
     </div>
@@ -32,7 +41,7 @@ input {
     /*
         if you add binding, then make it length + 4ch
      */
-    width: 20ch;
+    width: 30ch;
 }
 
 p {

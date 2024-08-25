@@ -1,6 +1,6 @@
 <script setup>
 
-import SignupForm from "../components/SignupForm.vue";
+import SignupForm from "../components/user_forms/SignupForm.vue";
 import { useUserDataStore } from "../stores/userDataStore";
 
 const store = useUserDataStore();

@@ -3,9 +3,10 @@
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
-import { useUserDataStore } from "../stores/userDataStore";
+import { useUserDataStore } from "@/stores/userDataStore";
 import { useRouter } from 'vue-router';
 import InputField from './InputField.vue';
+import SubmitButton from "@/components/user_forms/SubmitButton.vue";
 
 
 const store = useUserDataStore();
@@ -49,18 +50,21 @@ const onSubmit = handleSubmit(async formValues => {
     setFieldError("password", errorMessage);
 });
 
+// maybe add a cache system for tasks?
 
 </script>
 
 <template>
-    <div class="flex justify-center items-center h-screen">
-        <form class="flex flex-col items-center gap-y-10 h-2/3" @submit="onSubmit">
-            <InputField type="text" name="username"  />
-            <InputField type="password" name="password"  />
+    <div class="flex flex-col justify-center items-center h-screen">
+        <div class="h-5/6">
+            <form class="flex flex-col items-center gap-y-10 pb-4 border border-solid border-black rounded-lg shadow-xl" @submit="onSubmit">
+                <h1 class="text-5xl bg-slate-300 w-full text-center py-2 rounded-t-lg">Login</h1>
+                <InputField type="text" name="username"  />
+                <InputField type="password" name="password"  />
 
-            <!-- Make this btn into a component eventaully -->
-            <button class="border border-solid border-black rounded-md w-24 hover:bg-gray-200">Submit</button>
-        </form>
+                <SubmitButton text="Login"/>
+            </form>
+        </div>
     </div>
 </template>
 

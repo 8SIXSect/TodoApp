@@ -1,7 +1,7 @@
 <script setup>
 
 
-import LoginForm from '../components/LoginForm.vue';
+import LoginForm from '../components/user_forms/LoginForm.vue';
 import { useUserDataStore } from '../stores/userDataStore';
 
 
