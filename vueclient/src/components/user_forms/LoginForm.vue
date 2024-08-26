@@ -7,8 +7,10 @@ import { useUserDataStore } from "@/stores/userDataStore";
 import { useRouter } from 'vue-router';
 import InputField from './InputField.vue';
 import UserForm from './UserForm.vue';
+import { inject } from 'vue';
 
 
+const apiUrl = inject("apiUrl");
 const store = useUserDataStore();
 const router = useRouter();
 
@@ -45,7 +47,7 @@ const { setFieldError, handleSubmit } = useForm({
     * @return {void}
 */
 const onSubmit = handleSubmit(async formValues => {
-    const errorMessage = await store.login(formValues.username, formValues.password, router);
+    const errorMessage = await store.login(apiUrl, formValues.username, formValues.password, router);
     setFieldError("username", errorMessage);
     setFieldError("password", errorMessage);
 });

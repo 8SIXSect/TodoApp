@@ -26,8 +26,8 @@ export const useUserDataStore = defineStore("userData", {
                 credentials: 'include'
             });
         },
-        async login(username, password, router) {
-            const response = await fetch('http://localhost:8000/login', {
+        async login(apiUrl, username, password, router) {
+            const response = await fetch(apiUrl("login"), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

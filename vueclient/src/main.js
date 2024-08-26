@@ -38,7 +38,7 @@ const router = createRouter({
 
 
 const app = createApp(App);
-app.provide('API_URL', import.meta.env.VITE_API_URL);
+app.provide('apiUrl', (path) => `${import.meta.env.VITE_API_URL}/${path}`);
 
 const pinia = createPinia();
 app.use(pinia);

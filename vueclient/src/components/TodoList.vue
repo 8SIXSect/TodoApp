@@ -4,7 +4,7 @@ import { useTodoTaskStore } from '../stores/todoTasksStore';
 import { getCSRFToken } from '../stores/userDataStore';
 
 
-const API_URL = inject("API_URL");
+const apiUrl = inject("apiUrl");
 const props = defineProps(["tasksAreLoading", "updateFunction"]);
 const tasksStore = useTodoTaskStore();
 
@@ -14,7 +14,7 @@ const deleteTask = async (taskId) => {
         id: taskId
     };
 
-    await fetch(API_URL, {
+    await fetch(apiUrl("tasks/"), {
         "headers": {
             "content-type": "application/json",
             "X-CSRFToken": getCSRFToken()

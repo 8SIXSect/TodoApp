@@ -6,7 +6,10 @@ import { z } from 'zod';
 import { useRouter } from 'vue-router';
 import InputField from "./InputField.vue";
 import UserForm from '@/components/user_forms/UserForm.vue';
+import { inject } from 'vue';
 
+
+const apiUrl = inject("apiUrl");
 const router = useRouter();
 
 
@@ -51,13 +54,15 @@ const { setFieldError, handleSubmit } = useForm({
     * @return {void}
 */
 const onSubmit = handleSubmit(async formValues => {
-    const response = await fetch('http://localhost:8000/register', {
+    
+    const response = await fetch(apiUrl("/register"), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(formValues),
-        mode: "cors"
+        mode: "cors",
+        
     });
 
     if (response.ok) {

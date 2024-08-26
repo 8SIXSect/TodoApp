@@ -8,7 +8,8 @@ import { useTodoTaskStore } from '../stores/todoTasksStore';
 import { getCSRFToken, useUserDataStore } from '../stores/userDataStore';
 
 
-const API_URL = inject("API_URL");
+const apiUrl = inject("apiUrl");
+const urlToTasks = apiUrl("tasks/");
 
 const userDataStore = useUserDataStore();
 const tasksStore = useTodoTaskStore();
@@ -23,7 +24,7 @@ onMounted(() => {
 
 
 const sendGetRequestAndUpdateTasks = async () => {
-    let response = await fetch(API_URL, {
+    let response = await fetch(urlToTasks, {
         method: "GET",
         credentials: "include",
     });
@@ -40,7 +41,7 @@ const addTaskOnFormSubmit = async () => {
         description: newTodoTask.value
     }
 
-    await fetch(API_URL, {
+    await fetch(urlToTasks, {
         "headers": {
             "content-type": "application/json",
             "X-CSRFToken": getCSRFToken()
