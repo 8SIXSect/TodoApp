@@ -1,5 +1,5 @@
 <script setup>
-import TodoList from './TodoList.vue';
+import TodoListTask from './TodoListTask.vue';
 import LogoutButton from "./LogoutButton.vue";
 import { inject } from 'vue';
 import { ref } from 'vue';
@@ -54,6 +54,7 @@ const addTaskOnFormSubmit = async () => {
     newTodoTask.value = "";
 };
 
+
 </script>
 
 <template>
@@ -69,7 +70,15 @@ const addTaskOnFormSubmit = async () => {
                     <img class="w-12 h-12" src="@/assets/plus.svg" alt="Plus"/>
                 </button>
             </form>
-            <TodoList :tasks-are-loading="tasksAreLoading" :update-function="sendGetRequestAndUpdateTasks"/>
+            <ul>
+                <TodoListTask
+                    v-for="task in tasksStore.tasks"
+                    :task-id="task.id"
+                    :description="task.description"
+                    :tasks-are-loading="tasksAreLoading"
+                    :update-function="sendGetRequestAndUpdateTasks"
+                    />
+            </ul>
         </div>
     </div>
     <LogoutButton />
