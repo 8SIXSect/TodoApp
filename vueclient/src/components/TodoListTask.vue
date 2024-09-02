@@ -2,13 +2,11 @@
 
 import { ref, inject } from 'vue';
 import { getCSRFToken } from '../stores/userDataStore';
-import { useTodoTaskStore } from '../stores/todoTasksStore';
+import TodoButton from "@/components/TodoButton.vue";
 
 
 const apiUrl = inject("apiUrl");
 const props = defineProps(["tasksAreLoading", "taskId", "description", "updateFunction"]);
-
-const tasksStore = useTodoTaskStore();
 
 const taskInput = ref(props.description);
 const valueBeforeEditing = ref("");
@@ -111,13 +109,8 @@ const revertEditedTask = async () => {
             :readonly="readOnly"
             />
         <span class="flex">
-            <!-- You might be able to remove parameters & args for these -->
-            <div class="bg-green-600 w-16 h-16 flex items-center justify-center" @click="editTask">
-                <img src="@/assets/edit.png" alt="Edit" class="h-8 w-8 invert hover:invert-0"/>
-            </div>
-            <div class="bg-red-600 w-16 h-16 flex items-center justify-center" @click="deleteTask">
-                <img src="@/assets/delete.png" alt="Delete" class="h-8 w-8 invert hover:invert-0"/>
-            </div>
+            <TodoButton background-color="bg-green-600" image-file-name="edit.png" :action="editTask" image-alt="Edit" />
+            <TodoButton background-color="bg-red-600" image-file-name="delete.png" :action="deleteTask" image-alt="Delete" />
         </span>
     </li>
 </template>
