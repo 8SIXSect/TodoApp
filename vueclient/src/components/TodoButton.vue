@@ -7,7 +7,7 @@ const props = defineProps([
     "imageAlt"
 ]);
 
-const divClasses = `${props.backgroundColor} w-16 h-16 flex items-center justify-center`;
+const divClasses = `${props.backgroundColor} flex items-center justify-center w-8 h-8`;
 
 const getImageURL = () => {
     return new URL(`../assets/${props.imageFileName}`, import.meta.url);
@@ -17,6 +17,6 @@ const getImageURL = () => {
 
 <template>
     <div :class="divClasses" @click="action">
-        <img :src="getImageURL()" :alt="imageAlt" class="h-8 w-8 invert hover:invert-0"/>
+        <img :src="getImageURL()" :alt="imageAlt" class="invert hover:invert-0"/>
     </div>
 </template>

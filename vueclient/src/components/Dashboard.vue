@@ -58,15 +58,19 @@ const addTaskOnFormSubmit = async () => {
 </script>
 
 <template>
-    <div class="m-h-96 flex justify-center items-center">
-        <div class="flex flex-col w-full lg:w-1/2">
-            <h1 class="text-3xl lg:text-5xl bg-slate-700 text-slate-100 font-bold text-center py-12 rounded-t-lg">
-                {{ userDataStore.user?.username }}'s Tasks
-            </h1>
+    <div class="flex flex-col w-full">
+        <div class="flex flex-col">
+            <div class="bg-slate-700 text-slate-100 font-bold flex justify-center py-8">
+                <h1 class="text-center text-6xl max-w-[10ch]">
+                    {{ userDataStore.user?.username }}'s Tasks
+                </h1>
+            </div>
             <form class="flex border" @submit.prevent="addTaskOnFormSubmit">
-                <input type="text" placeholder="Add your todo"
-                       class="grow p-4 text-2xl outline-none" v-model="newTodoTask" />
-                <button class="pr-2" type="submit">
+                <textarea placeholder="Add a task"
+                       class="grow outline-none text-3xl px-3 py-6 max-w-[18ch] resize-none"
+                       rows="2"
+                       v-model="newTodoTask"></textarea>
+                <button class="" type="submit">
                     <img class="w-12 h-12" src="@/assets/plus.svg" alt="Plus"/>
                 </button>
             </form>
@@ -83,3 +87,4 @@ const addTaskOnFormSubmit = async () => {
     </div>
     <LogoutButton />
 </template>
+

@@ -103,7 +103,7 @@ const revertEditedTask = async () => {
 <template>
     <li :class="taskContainerClasses.join(' ')">
         <input
-            class="border-0 bg-transparent outline-none text-4xl font-semibold grow"
+            class="border-0 bg-transparent outline-none font-semibold grow"
             v-model="taskInput"
             v-on:keydown.enter="revertEditedTask"
             :readonly="readOnly"
