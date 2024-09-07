@@ -67,7 +67,7 @@ const addTaskOnFormSubmit = async () => {
             </div>
             <form class="flex border" @submit.prevent="addTaskOnFormSubmit">
                 <textarea placeholder="Add a task"
-                       class="grow outline-none text-3xl px-3 py-6 max-w-[18ch] resize-none"
+                       class="grow outline-none text-3xl px-3 py-6 max-w-task resize-none"
                        rows="2"
                        v-model="newTodoTask"></textarea>
                 <button class="" type="submit">
