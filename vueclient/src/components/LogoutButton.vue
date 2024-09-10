@@ -17,7 +17,7 @@ const logout = () => {
 </script>
 
 <template>
-    <div class="flex justify-center py-8 mt-32 bg-slate-200 hover:bg-slate-300" @click="logout" role="button">
+    <div class="flex justify-center py-8 mt-24 bg-slate-200 hover:bg-slate-300" @click="logout" role="button">
         <button class="text-2xl font-bold" @click="logout">Log Out</button>
     </div>
 </template>

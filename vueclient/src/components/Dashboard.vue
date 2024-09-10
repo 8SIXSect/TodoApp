@@ -1,6 +1,7 @@
 <script setup>
 import TodoListTask from './TodoListTask.vue';
 import LogoutButton from "./LogoutButton.vue";
+import FooterWithInformation from "./FooterWithInformation.vue";
 import { inject } from 'vue';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
@@ -86,5 +87,7 @@ const addTaskOnFormSubmit = async () => {
         </div>
     </div>
     <LogoutButton />
+
+    <FooterWithInformation />
 </template>
 
