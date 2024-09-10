@@ -109,9 +109,9 @@ const revertEditedTask = async () => {
             v-on:keydown.enter="revertEditedTask"
             :readonly="readOnly"
             ></textarea>
-        <span class="flex">
-            <TodoButton background-color="bg-green-600" image-file-name="edit.png" :action="editTask" image-alt="Edit" />
-            <TodoButton background-color="bg-red-600" image-file-name="delete.png" :action="deleteTask" image-alt="Delete" />
+        <span class="flex h-20 gap-1">
+            <TodoButton image-file-name="edit.png" :action="editTask" image-alt="Edit" />
+            <TodoButton image-file-name="delete.png" :action="deleteTask" image-alt="Delete" />
         </span>
     </li>
 </template>
