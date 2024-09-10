@@ -104,7 +104,7 @@ const revertEditedTask = async () => {
 <template>
     <li :class="taskContainerClasses.join(' ')">
         <textarea
-            class="border-0 bg-transparent outline-none font-semibold max-w-task text-2xl"
+            class="border-0 bg-transparent outline-none resize-none font-semibold max-w-task lg:max-w-task-lg text-2xl"
             v-model="taskInput"
             v-on:keydown.enter="revertEditedTask"
             :readonly="readOnly"

@@ -5,7 +5,8 @@ module.exports = {
     theme: {
         extend: {
             "maxWidth": {
-                "task": "16ch"
+                "task": "15ch",
+                "task-lg": "25ch"
             }
         },
     },
