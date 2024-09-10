@@ -75,6 +75,8 @@ const editTask = async () => {
 
 
 const revertEditedTask = async () => {
+    if (taskInput.value.trim() === "") return;
+
     if (!readOnly.value) {
 
         flipContainerClasses();

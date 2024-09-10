@@ -37,6 +37,7 @@ const sendGetRequestAndUpdateTasks = async () => {
 
 
 const addTaskOnFormSubmit = async () => {
+    if (newTodoTask.value.trim() === "") return;
 
     const jsonPayload = {
         description: newTodoTask.value
@@ -82,6 +83,7 @@ const addTaskOnFormSubmit = async () => {
                     :task-id="task.id"
                     :description="task.description"
                     :tasks-are-loading="tasksAreLoading"
+
                     :update-function="sendGetRequestAndUpdateTasks"
                     />
                 </ul>
