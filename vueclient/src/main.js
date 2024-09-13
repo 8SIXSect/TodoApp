@@ -1,3 +1,4 @@
+import { useUserDataStore } from './stores/userDataStore';
 import { createRouter, createWebHistory } from 'vue-router';
 import { createPinia } from 'pinia'
 import { createApp } from 'vue';
@@ -43,4 +44,8 @@ app.provide('apiUrl', (path) => `${import.meta.env.VITE_API_URL}/${path}`);
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
+
+const userDataStore = useUserDataStore();
+userDataStore.setCsrfToken();
+
 app.mount('#app');
