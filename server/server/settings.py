@@ -38,6 +38,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
 
+# Production render.com doesn't like SameSite: Lax/Strict
+if not DEBUG:
+    CSRF_COOKIE_SAMESITE = "none"
+
 # Application definition
 
 INSTALLED_APPS = [
