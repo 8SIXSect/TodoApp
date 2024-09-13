@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if env('DEBUG') == "0" else True
+DEBUG = env('DEBUG') != "0"
 
 ALLOWED_HOSTS = ["localhost", "todoappapi-99w2.onrender.com"]
 CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-2igo.onrender.com"]
@@ -38,8 +38,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
 
+# HERE'S THE PROBLEM CHILD
 # Production render.com doesn't like SameSite: Lax/Strict
 if not DEBUG:
+    print("csrf cookes")
     CSRF_COOKIE_SAMESITE = "none"
 
 # Application definition
