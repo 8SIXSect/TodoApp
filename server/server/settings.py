@@ -39,12 +39,10 @@ CORS_ALLOW_CREDENTIALS = True
 AUTH_USER_MODEL = "main.TodoAppUser"
 
 # Production render.com doesn't like SameSite: Lax/Strict
-if not DEBUG:
-    print("NODEBUG")
-    CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SAMESITE = "None"
 
-    # link to mozilla
-    CSRF_COOKIE_SECURE = True
+# link to mozilla
+CSRF_COOKIE_SECURE = True
 
 # Application definition
 
