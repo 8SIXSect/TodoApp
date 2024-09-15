@@ -39,13 +39,15 @@ const router = createRouter({
 
 
 const app = createApp(App);
-app.provide('apiUrl', (path) => `${import.meta.env.VITE_API_URL}/${path}`);
+
+const apiUrl = (path) => `${import.meta.env.VITE_API_URL}/${path}`;
+app.provide('apiUrl', apiUrl);
 
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
 
 const userDataStore = useUserDataStore();
-userDataStore.setCsrfToken();
+userDataStore.setCsrfToken(apiUrl);
 
 app.mount('#app');
