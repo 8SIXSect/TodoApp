@@ -31,8 +31,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG') != "0"
 
-ALLOWED_HOSTS = ["localhost", "todoappapi-99w2.onrender.com"]
-CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-2igo.onrender.com"]
+ALLOWED_HOSTS = ["localhost", "todoapp-j5pu.onrender.com"]
+CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-j5pu.onrender.com"]
 CSRF_TRUSTED_ORIGINS = ['http://localhost:5000']
 CORS_ALLOW_CREDENTIALS = True
 
