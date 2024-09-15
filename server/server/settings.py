@@ -42,7 +42,7 @@ AUTH_USER_MODEL = "main.TodoAppUser"
 # Production render.com doesn't like SameSite: Lax/Strict
 if not DEBUG:
     print("csrf cookes")
-    CSRF_COOKIE_SAMESITE = "None; Secure"
+    CSRF_COOKIE_SAMESITE = None
 
 # Application definition
 
