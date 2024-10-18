@@ -39,19 +39,21 @@ const sendGetRequestAndUpdateTasks = async () => {
 const addTaskOnFormSubmit = async () => {
     if (newTodoTask.value.trim() === "") return;
 
+    console.log("doc", document.cookie)
+    
     const jsonPayload = {
         description: newTodoTask.value
     }
-    console.log("from post", getCSRFToken())
-    (await fetch(urlToTasks, {
-        "headers": {
-            "content-type": "application/json",
-            //"X-CSRFToken": getCSRFToken()
-        },
-        method: "POST",
-        body: JSON.stringify(jsonPayload),
-        credentials: "include"
-    })
+    (
+        await fetch(urlToTasks, {
+            "headers": {
+                "content-type": "application/json",
+                //"X-CSRFToken": getCSRFToken()
+            },
+            method: "POST",
+            body: JSON.stringify(jsonPayload),
+            credentials: "include"
+        })
     ).then(sendGetRequestAndUpdateTasks);
 
     newTodoTask.value = "";

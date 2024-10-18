@@ -27,8 +27,6 @@ export const useUserDataStore = defineStore("userData", {
             });
         },
         async login(apiUrl, username, password, router) {
-            console.log(document.cookie)
-
             const response = await fetch(apiUrl("login"), {
                 method: 'POST',
                 headers: {
