@@ -46,7 +46,7 @@ const addTaskOnFormSubmit = async () => {
     await fetch(urlToTasks, {
         "headers": {
             "content-type": "application/json",
-            "X-CSRFToken": getCSRFToken()
+            //"X-CSRFToken": getCSRFToken()
         },
         method: "POST",
         body: JSON.stringify(jsonPayload),
