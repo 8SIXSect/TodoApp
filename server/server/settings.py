@@ -38,11 +38,15 @@ CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
 
-# Production render.com doesn't like SameSite: Lax/Strict
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
+# Cookies have to be `None; Secure` in order to be sent over CORS
 CSRF_COOKIE_SAMESITE = "None"
-
-# link to mozilla
 CSRF_COOKIE_SECURE = True
+
+print("DEBUG MSG")
+
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
