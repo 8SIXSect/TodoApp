@@ -32,8 +32,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG') != "0"
 
 ALLOWED_HOSTS = ["localhost", "todoapp-j5pu.onrender.com"]
-CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoapp-j5pu.onrender.com"]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5000']
+CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoappclient-ngof.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5000', "https://todoappclient-ngof.onrender.com"]
 CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
