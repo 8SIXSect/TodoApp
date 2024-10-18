@@ -55,7 +55,7 @@ const { setFieldError, handleSubmit } = useForm({
 */
 const onSubmit = handleSubmit(async formValues => {
     
-    const response = await fetch(apiUrl("/register"), {
+    const response = await fetch(apiUrl("register"), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
