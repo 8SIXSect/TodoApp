@@ -27,11 +27,12 @@ export const useUserDataStore = defineStore("userData", {
             });
         },
         async login(apiUrl, username, password, router) {
+            console.log("cok", getCSRFToken());
             const response = await fetch(apiUrl("login"), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    //'X-CSRFToken': getCSRFToken()
+                    'X-CSRFToken': getCSRFToken()
                 },
                 body: JSON.stringify({ username, password }),
                 mode: "cors",
@@ -74,8 +75,6 @@ export function getCSRFToken() {
      */
     const name = 'csrftoken';
     let cookieValue = null;
-
-    console.log("From, cookie", document.cookie);
 
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');

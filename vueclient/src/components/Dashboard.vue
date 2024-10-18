@@ -42,8 +42,8 @@ const addTaskOnFormSubmit = async () => {
     const jsonPayload = {
         description: newTodoTask.value
     }
-
-    await fetch(urlToTasks, {
+    console.log("from post", getCSRFToken())
+    (await fetch(urlToTasks, {
         "headers": {
             "content-type": "application/json",
             //"X-CSRFToken": getCSRFToken()
@@ -51,7 +51,8 @@ const addTaskOnFormSubmit = async () => {
         method: "POST",
         body: JSON.stringify(jsonPayload),
         credentials: "include"
-    }).then(sendGetRequestAndUpdateTasks);
+    })
+    ).then(sendGetRequestAndUpdateTasks);
 
     newTodoTask.value = "";
 };
