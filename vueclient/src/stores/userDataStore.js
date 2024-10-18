@@ -27,12 +27,13 @@ export const useUserDataStore = defineStore("userData", {
             });
         },
         async login(apiUrl, username, password, router) {
-            console.log("cok", getCSRFToken());
+            console.log(document.cookie)
+
             const response = await fetch(apiUrl("login"), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken()
+                    //'X-CSRFToken': getCSRFToken()
                 },
                 body: JSON.stringify({ username, password }),
                 mode: "cors",
