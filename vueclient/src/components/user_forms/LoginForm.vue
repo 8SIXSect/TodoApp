@@ -11,6 +11,7 @@ import { inject } from 'vue';
 
 
 const apiUrl = inject("apiUrl");
+
 const store = useUserDataStore();
 const router = useRouter();
 

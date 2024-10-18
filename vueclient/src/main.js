@@ -51,3 +51,4 @@ const userDataStore = useUserDataStore();
 userDataStore.setCsrfToken(apiUrl);
 
 app.mount('#app');
+
