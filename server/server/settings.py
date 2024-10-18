@@ -25,21 +25,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG') != "0"
 
 ALLOWED_HOSTS = ["localhost", "todoapp-j5pu.onrender.com"]
-CORS_ALLOWED_ORIGINS = ['http://localhost:5000', "https://todoappclient-ngof.onrender.com"]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5000', "https://todoappclient-ngof.onrender.com"]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5000',
+    "https://todoappclient-ngof.onrender.com",
+    "https://todoclient.huntergarzaportfolio.com"
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5000',
+    "https://todoappclient-ngof.onrender.com",
+    "https://todoclient.huntergarzaportfolio.com"
+]
 CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = "main.TodoAppUser"
 
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
 # Cookies have to be `None; Secure` in order to be sent over CORS
+# See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
 CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_SECURE = True
 
