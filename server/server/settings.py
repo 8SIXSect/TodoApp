@@ -49,11 +49,11 @@ AUTH_USER_MODEL = "main.TodoAppUser"
 
 # Cookies have to be `None; Secure` in order to be sent over CORS
 # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
-CSRF_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_SECURE = True
+#CSRF_COOKIE_SAMESITE = "None"
+#CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SECURE = True
+#SESSION_COOKIE_SAMESITE = "None"
+#SESSION_COOKIE_SECURE = True
 
 # Application definition
 
