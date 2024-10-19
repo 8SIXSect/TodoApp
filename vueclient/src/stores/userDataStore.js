@@ -21,7 +21,7 @@ export const useUserDataStore = defineStore("userData", {
     },
     actions: {
         async setCsrfToken(apiUrl) {
-            await fetch(apiUrl('api/set-csrf-token'), {
+            await fetch(apiUrl('set-csrf-token'), {
                 method: 'GET',
                 credentials: 'include'
             });

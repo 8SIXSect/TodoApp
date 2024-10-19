@@ -40,7 +40,14 @@ const router = createRouter({
 
 const app = createApp(App);
 
-const apiUrl = (path) => `${import.meta.env.VITE_API_URL}/${path}`;
+const apiUrl = (path) => {
+    if (import.meta.env.VITE_DEBUG == "0") {
+        // Then it is not in debug mode
+        return `/${path}`;
+    } else {
+        return `${import.meta.env.VITE_API_URL}/${path}`;
+    }
+};
 app.provide('apiUrl', apiUrl);
 
 const pinia = createPinia();
