@@ -28,16 +28,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG') != "0"
 
-ALLOWED_HOSTS = ["localhost", "todoapp-j5pu.onrender.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "todoapp-j5pu.onrender.com",
+    "todoapi.huntergarzaportfolio.com",
+]
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5000',
     "https://todoappclient-ngof.onrender.com",
-    "https://todoclient.huntergarzaportfolio.com"
+    "https://todoclient.huntergarzaportfolio.com",
 ]
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5000',
     "https://todoappclient-ngof.onrender.com",
-    "https://todoclient.huntergarzaportfolio.com"
+    "https://todoclient.huntergarzaportfolio.com",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
