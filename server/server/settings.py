@@ -41,7 +41,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://todoclient.huntergarzaportfolio.com",
 ]
 
-CSRF_COOKIE_DOMAIN = ".huntergarzaportfolio.com"
+if not DEBUG:
+    CSRF_COOKIE_DOMAIN = env("CSRF_COOKIE_DOMAIN")
+    # Else: this defaults to None
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5000',
