@@ -41,7 +41,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://todoclient.huntergarzaportfolio.com",
 ]
 
-CSRF_COOKIE_DOMAIN = "todoclient.huntergarzaportfolio.com"
+CSRF_COOKIE_DOMAIN = "todoapi.huntergarzaportfolio.com"
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5000',
