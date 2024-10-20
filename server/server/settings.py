@@ -33,11 +33,16 @@ ALLOWED_HOSTS = [
     "todoapp-j5pu.onrender.com",
     "todoapi.huntergarzaportfolio.com",
 ]
+
+# Cors actually isn't used in production
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5000',
     "https://todoappclient-ngof.onrender.com",
     "https://todoclient.huntergarzaportfolio.com",
 ]
+
+CSRF_COOKIE_DOMAIN = "todoclient.huntergarzaportfolio.com"
+
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5000',
     "https://todoappclient-ngof.onrender.com",
