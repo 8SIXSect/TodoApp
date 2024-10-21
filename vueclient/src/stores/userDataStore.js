@@ -31,7 +31,7 @@ export const useUserDataStore = defineStore("userData", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    //'X-CSRFToken': getCSRFToken()
+                    'X-CSRFToken': getCSRFToken()
                 },
                 body: JSON.stringify({ username, password }),
                 mode: "cors",
