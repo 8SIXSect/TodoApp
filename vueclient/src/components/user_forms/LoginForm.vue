@@ -61,8 +61,8 @@ const onSubmit = handleSubmit(async formValues => {
             <InputField type="password" name="password"  />
         </template>
         <template v-slot:extraLink>
-            <h6>Already have an account?</h6>
-            <a href="/signup" class="underline text-cyan-700">Sign in here!</a>
+            <h6>Don't have an account yet?</h6>
+            <a href="/signup" class="underline text-cyan-700">Sign up here!</a>
         </template>
     </UserForm>
 </template>
