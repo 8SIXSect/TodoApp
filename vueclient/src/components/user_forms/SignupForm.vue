@@ -86,9 +86,12 @@ const onSubmit = handleSubmit(async formValues => {
 
 <template>
     <UserForm title="Sign Up" :on-submit="onSubmit" submit-button-text="Sign Up">
-        <InputField type="text" name="email" />
-        <InputField type="text" name="username"  />
-        <InputField type="password" name="password"  />
+        <template v-slot:fields>
+            <InputField type="text" name="email" />
+            <InputField type="text" name="username"  />
+            <InputField type="password" name="password"  />
+        </template>
+        <template v-slot:extraLink></template>
     </UserForm>
 </template>
 

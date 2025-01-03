@@ -52,15 +52,18 @@ const onSubmit = handleSubmit(async formValues => {
     setFieldError("username", errorMessage);
     setFieldError("password", errorMessage);
 });
-
-// maybe add a cache system for tasks?
-
 </script>
 
 <template>
     <UserForm title="Login" :on-submit="onSubmit" submit-button-text="Login">
-        <InputField type="text" name="username"  />
-        <InputField type="password" name="password"  />
+        <template v-slot:fields>
+            <InputField type="text" name="username"  />
+            <InputField type="password" name="password"  />
+        </template>
+        <template v-slot:extraLink>
+            <h6>Already have an account?</h6>
+            <a href="/signup" class="underline text-cyan-700">Sign in here!</a>
+        </template>
     </UserForm>
 </template>
 
