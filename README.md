@@ -3,7 +3,7 @@
 ## Frontend (Client)
 Users are met with a _responsive_, minimalistic UI complete with _login_, _registration_, and _dashboard_ views/routes.
 
-A demo can be found [here](https://todoclient.huntergarzaportfolio.com/).
+A demo can be found 
 
 ### Tech Stack:
 - **Vue 3** (Composition API)
