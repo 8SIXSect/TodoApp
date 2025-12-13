@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Django
+*.sqlite3
+.env # Environment file for secrets/settings
+media/ # User uploaded media (can be ignored, depending on deployment strategy)
+static_root/ # Collected static files directory (if generated during deployment)
+myproject/wsgi.py # Optional, if dynamically generated
+myproject/asgi.py # Optional, if dynamically generated
+# Migrations should generally be included in version control, but the __pycache__ within them should be ignored
+
+# Virtual Environment
+venv/
+env/
+.env
+.venv/
+# Or whatever you named your virtual environment folder
+
+# IDE and Editor Files
+.vscode/ # VS Code settings
+.idea/ # PyCharm/IntelliJ settings
+*.swp
+*.sublime-workspace
