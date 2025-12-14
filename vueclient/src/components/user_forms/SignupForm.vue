@@ -54,7 +54,7 @@ const { setFieldError, handleSubmit } = useForm({
     * @return {void}
 */
 const onSubmit = handleSubmit(async formValues => {
-    
+    console.log(apiUrl("register"));
     const response = await fetch(apiUrl("register"), {
         method: 'POST',
         headers: {

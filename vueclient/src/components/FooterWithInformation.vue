@@ -3,4 +3,3 @@
         Designed & Developed by Hunter N. Garza
     </footer>
 </template>
-

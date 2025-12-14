@@ -91,8 +91,5 @@ const addTaskOnFormSubmit = async () => {
         </div>
 
     </div>
-    <LogoutButton />
-
-    <FooterWithInformation />
 </template>
 
