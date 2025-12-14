@@ -12,12 +12,20 @@ const taskInput = ref(props.description);
 const valueBeforeEditing = ref("");
 const readOnly = ref(true);
 const taskContainerClasses = ref([
-    "py-8",
+    "py-6",
+    "px-4",
     "bg-emerald-500",
     "flex",
-    "justify-evenly",
+    "justify-between",
     "items-center",
     "text-white",
+    "rounded-md",
+    "shadow-sm",
+    "transition-all",
+    "duration-200",
+    "hover:shadow-md",
+    "my-3",
+    "gap-4",
 ]);
 
 const deleteTask = async () => {
@@ -106,12 +114,13 @@ const revertEditedTask = async () => {
 <template>
     <li :class="taskContainerClasses.join(' ')">
         <textarea
-            class="border-0 bg-transparent outline-none resize-none font-semibold max-w-task lg:max-w-task-lg text-2xl"
+            class="border-0 bg-transparent outline-none resize-none font-semibold text-white placeholder-slate-200 py-2 px-1 leading-tight text-xl w-full"
             v-model="taskInput"
-            v-on:keydown.enter="revertEditedTask"
+            v-on:keydown.enter.prevent="revertEditedTask"
             :readonly="readOnly"
             ></textarea>
-        <span class="flex h-20 gap-1">
+
+        <span class="flex items-center gap-3">
             <TodoButton image-file-name="edit.png" :action="editTask" image-alt="Edit" />
             <TodoButton image-file-name="delete.png" :action="deleteTask" image-alt="Delete" />
         </span>
