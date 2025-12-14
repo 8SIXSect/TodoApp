@@ -25,3 +25,4 @@ env/
 .idea/ # PyCharm/IntelliJ settings
 *.swp
 *.sublime-workspace
+.idea/
