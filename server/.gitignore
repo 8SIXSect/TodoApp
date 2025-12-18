@@ -22,6 +22,6 @@ env/
 
 # IDE and Editor Files
 .vscode/ # VS Code settings
-.idea/ # PyCharm/IntelliJ settings
+.idea/
 *.swp
 *.sublime-workspace
