@@ -41,7 +41,7 @@ const router = createRouter({
 const app = createApp(App);
 
 const apiUrl = (path) => {
-    if (import.meta.env.VITE_DEBUG == "0") {
+    if (import.meta.env.VITE_DEBUG === "0") {
         // Then it is not in debug mode
         return `/${path}`;
     } else {
@@ -58,4 +58,3 @@ const userDataStore = useUserDataStore();
 userDataStore.setCsrfToken(apiUrl);
 
 app.mount('#app');
-

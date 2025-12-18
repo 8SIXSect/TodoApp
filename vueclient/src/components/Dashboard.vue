@@ -60,39 +60,41 @@ const addTaskOnFormSubmit = async () => {
 </script>
 
 <template>
-    <div class="md:flex md:justify-center md:mt-24">
+    <div class="md:flex md:justify-center md:mt-24 px-4">
         <div class="flex flex-col w-full md:w-1/2">
             <div class="flex flex-col">
-                <div class="bg-slate-700 text-slate-100 font-bold flex justify-center py-8 md:rounded-t">
-                    <h1 class="text-center text-6xl md:text-4xl max-w-[10ch] md:max-w-[20ch]">
-                        {{ userDataStore.user?.username }}'s Tasks
-                    </h1>
-                </div>
-                <form class="flex border px-2 sm:px-4 justify-between" @submit.prevent="addTaskOnFormSubmit">
-                    <textarea placeholder="Add a task"
-                        class="grow outline-none text-3xl px-3 py-6 max-w-task lg:max-w-task-lg resize-none"
-                        rows="2"
-                        v-model="newTodoTask"></textarea>
-                    <button type="submit">
-                        <img class="w-12 h-12" src="@/assets/plus.svg" alt="Plus"/>
-                    </button>
-                </form>
-                <ul>
-                    <TodoListTask
-                    v-for="task in tasksStore.tasks"
-                    :task-id="task.id"
-                    :description="task.description"
-                    :tasks-are-loading="tasksAreLoading"
+                <!-- Card container -->
+                <div class="bg-slate-700 text-slate-100 font-bold flex flex-col md:rounded-lg overflow-hidden shadow-md">
+                    <div class="flex justify-center py-8 bg-slate-700">
+                        <h1 class="text-center text-5xl md:text-4xl max-w-[10ch] md:max-w-[20ch]">
+                            {{ userDataStore.user?.username }}'s Tasks
+                        </h1>
+                    </div>
 
-                    :update-function="sendGetRequestAndUpdateTasks"
-                    />
-                </ul>
+                    <form class="flex border-t border-slate-600 px-3 sm:px-4 justify-between items-stretch bg-slate-800"
+                          @submit.prevent="addTaskOnFormSubmit">
+                        <textarea placeholder="Add a task"
+                            class="grow outline-none text-2xl px-3 py-4 max-w-task lg:max-w-task-lg resize-none bg-transparent text-slate-100 placeholder-slate-400"
+                            rows="2"
+                            v-model="newTodoTask"></textarea>
+
+                        <button type="submit" class="ml-3 self-center bg-emerald-500 hover:bg-emerald-600 transition-colors rounded-full p-3 shadow-sm">
+                            <img class="w-6 h-6" src="@/assets/plus.svg" alt="Plus"/>
+                        </button>
+                    </form>
+
+                    <ul class="divide-y divide-slate-700 p-4 bg-slate-800">
+                        <TodoListTask
+                        v-for="task in tasksStore.tasks"
+                        :key="task.id"
+                        :task-id="task.id"
+                        :description="task.description"
+                        :tasks-are-loading="tasksAreLoading"
+                        :update-function="sendGetRequestAndUpdateTasks"
+                        />
+                    </ul>
+                </div>
             </div>
         </div>
-
     </div>
-    <LogoutButton />
-
-    <FooterWithInformation />
 </template>
-
